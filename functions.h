@@ -1,5 +1,5 @@
-#ifndef MYALLOC_H
-#define MYALLOC_H
+#ifndef functions_h
+#define functions_h
 
 #include <stdlib.h>
 
@@ -7,4 +7,4 @@
 void *myalloc(int size);
 void print_data(void);
 
-#endif /* MYALLOC_H */
+#endif // functions_h
