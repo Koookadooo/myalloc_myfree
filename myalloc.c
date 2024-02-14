@@ -61,6 +61,7 @@ void *myalloc(int size) {
     }
     current = current->next;
   }
+    printf("No available memory\n");
     return NULL;
 }
 
