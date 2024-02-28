@@ -28,6 +28,23 @@ void split_block(struct block *current, int size) {
     current->next = new_block;
 }
 
+// Function to coalesce free blocks
+void coalesce(struct block *head) {
+    struct block *current = head;
+    struct block *next = current->next;
+    while (next != NULL) {
+        if (current->in_use == 0 && next->in_use == 0) {
+            // merge the sizes of the two blocks
+            current->size += next->size + padded_block_size; // Include the size of the block structure itself in the merge
+            current->next = next->next;
+            next = current->next;
+        } else {
+            current = next;
+            next = next->next;
+        }
+    }
+}
+
 // Print the data regarding allocated and free blocks
 void print_data(void) {
     struct block *b = head;

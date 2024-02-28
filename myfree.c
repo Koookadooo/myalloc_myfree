@@ -1,6 +1,8 @@
 #include "helpers.h"
+#include "functions.h"
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 
 void myfree(void *ptr) {
     if (ptr == NULL) {
@@ -11,4 +13,7 @@ void myfree(void *ptr) {
 
     // Mark the block as not in use
     block_ptr->in_use = 0;
+
+    // Coalesce the block with any adjacent free blocks
+    coalesce(head);
 }
